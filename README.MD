@@ -2,6 +2,8 @@
 
 - `git clone ..`
 - `cd gateway`
+- `cp env.example .env`
+- `docker-compose up -d`
 - `go mod download`
 - `go run gateway/main.go`
 - `go run user/main.go`
