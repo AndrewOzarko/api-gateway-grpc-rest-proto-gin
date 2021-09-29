@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  mongodb:
+    container_name: "mongodb"
+    image: mongo:latest
+    hostname: mongodb
+    restart: always
+    volumes:
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - mongodb:/data/db
+      - mongoconfig:/data/configdb
+    env_file:
+      - .env
+    networks:
+      - gateway
+    ports:
+      - 27017:27017
+
+volumes:
+  mongodb:
+  mongoconfig:
+
+networks:
+  gateway:
+    external: true
